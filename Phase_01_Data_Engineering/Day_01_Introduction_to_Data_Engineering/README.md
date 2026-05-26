@@ -1,95 +1,193 @@
-MINI PROJECT : Student Data Explorer
-# Objective:
+80% of storage used … If you run out, you can't create, edit, and upload files. Get 30 GB for ₹15 for 3 months ₹59.
+1
+100%
+# Day 1 — Student Reference Guide
+## Introduction to Data Engineering + GitHub
+### Codeboosters Tech — Data Engineering + GenAI Internship Program
 
-Create a Student Performance Explorer using Pandas and Pythin to analyze student data and generate a detailed report.
+---
 
-# Dataset Columns:
+## Quick Reference Card
 
-name
+| Topic | Key Point |
+|-------|-----------|
+| Data Engineering | Building systems to collect, store, clean, and deliver data |
+| Structured Data | Rows and columns — CSV, Excel, SQL |
+| Semi-Structured | Key-value pairs — JSON, XML |
+| Unstructured | No fixed format — images, videos, audio, PDFs |
+| Pandas | Python library for working with tabular data |
+| DataFrame | In-memory table with rows and columns |
+| GitHub | Cloud platform for version control and code portfolio |
+| Commit | Saved snapshot of code with a description |
 
-gender
+---
 
-department
+## Essential Pandas Commands — Day 1
 
-math_score
+```python
+import pandas as pd                    # Import Pandas library
 
-programming_score
+df = pd.read_csv('filename.csv')       # Load a CSV file
 
-attendance_percentage
+df.head()                              # Show first 5 rows
+df.head(10)                            # Show first 10 rows
+df.tail()                              # Show last 5 rows
 
-total_score
+df.shape                               # (number_of_rows, number_of_columns)
+df.dtypes                              # Data type of each column
+df.describe()                          # Statistical summary
+df.isnull().sum()                      # Count missing values per column
+df.columns.tolist()                    # List all column names
 
-# Tasks to perform:
-1. Display Project title
+df['column_name']                      # Select one column
 
- Print a formatte title with seperator lines
+# Boolean Filtering
+df[df['column'] == 'value']            # Filter rows equal to value
+df[df['column'] > 80]                  # Filter rows greater than 80
+df[df['column'] < 75]                  # Filter rows less than 75
 
-2. Dataset Overview
+# Groupby and Aggregation
+df.groupby('column')['other'].mean()   # Average per group
+df['column'].value_counts()            # Count each unique value
 
-Display:
+# Sorting
+df.sort_values(by='column', ascending=False)   # Sort highest first
+df.sort_values(by='column', ascending=True)    # Sort lowest first
 
--Total number of students
+# New Column
+df['new_col'] = df['col1'] + df['col2']  # Add columns together
 
--total number of columns 
+# Save DataFrame
+df.to_csv('output.csv', index=False)   # Save as CSV
+```
 
--number of unique departments
+---
 
-3. Department wise analysis
+## Types of Data — Summary
 
-display the count of students in each department.
+### Structured Data
+- Organized in rows and columns
+- Every record has the same fields
+- Examples: marksheet, bank transactions, attendance register
+- Formats: CSV, Excel (.xlsx), SQL Database
 
-4. Score Analysis
+### Semi-Structured Data
+- Has labels/tags but not in strict rows and columns
+- Can have nested data (data inside data)
+- Examples: API responses, WhatsApp message metadata, config files
+- Formats: JSON, XML
 
-Find and Display:
+### Unstructured Data
+- No predefined format or structure
+- Cannot be stored directly in a spreadsheet without losing information
+- Examples: photos, lecture videos, voice notes, PDFs, handwritten notes
+- Formats: JPG, MP4, MP3, PDF, TXT
 
--highest math score
+**Key Fact:** 80% of all data created in the world is unstructured.
 
--lowest math score
+---
 
--avg math score
+## GitHub Key Concepts
 
--avg programming score
+| Term | Meaning | Analogy |
+|------|---------|---------|
+| Repository (Repo) | Project folder on GitHub | Google Drive folder for your project |
+| Commit | Saved snapshot with a message | Ctrl+S in Google Docs with a label |
+| Push | Send local code to GitHub | Upload to Google Drive |
+| Pull | Download code from GitHub | Download from Google Drive |
+| README.md | Project description file | Cover page of your project report |
+| Branch | Separate version of code | Making a copy to experiment on |
 
--avg attendance percentage
+### GitHub Setup Steps
+1. Go to github.com
+2. Sign Up → enter email, username, password
+3. Verify email
+4. Click '+' → 'New repository'
+5. Name: `codeboosters-internship-2024`
+6. Set to **Public**
+7. Check 'Add a README file'
+8. Click 'Create repository'
 
-5. Gender wise Analysis
+### Uploading Notebook to GitHub
+1. Go to your repository
+2. Click 'Add file' → 'Upload files'
+3. Drag and drop your `.ipynb` file
+4. Write a commit message: `Add Day 1 notebook`
+5. Click 'Commit changes'
 
-Calculate and display avg total score by gender
+---
 
-6. Top performers
+## Common Errors and Fixes
 
-Display top 5 students based on total score.
+| Error | Fix |
+|-------|-----|
+| `ModuleNotFoundError: No module named 'pandas'` | Run `!pip install pandas` |
+| `FileNotFoundError: student_performance.csv` | Upload file via Colab Files panel |
+| `KeyError: 'column_name'` | Check `df.columns` for exact spelling |
+| `SyntaxError` | Check for missing brackets, quotes, colons |
+| `IndentationError` | Use exactly 4 spaces. Never mix tabs and spaces |
 
-Show:
+---
 
--Student name
+## Dataset Reference — student_performance.csv
 
--Department
+| Column | Type | Description |
+|--------|------|-------------|
+| student_id | int | Unique student number |
+| name | text | Student's full name |
+| age | int | Age in years |
+| gender | text | Male or Female |
+| department | text | Engineering department |
+| semester | int | Current semester |
+| math_score | int | Math marks (0-100) |
+| science_score | int | Science marks (0-100) |
+| english_score | int | English marks (0-100) |
+| programming_score | int | Programming marks (0-100) |
+| attendance_percentage | int | Attendance % (0-100) |
+| city | text | Home city |
+| admission_year | int | Year of admission |
 
--total score
+**This dataset will be used across all 10 days of the internship.**
 
-7. Attendance Analysis
+---
 
-Find students whose attendance is below 75%
+## Practice Questions — Day 1
 
-Display:
+1. A hospital stores patient X-ray images, doctor's notes, and a table of patient vital signs. Classify each data type.
 
--Name
+2. Why do companies need Data Engineers? Give a real-world example.
 
--Department
+3. Write Python code to load `sales.csv` and show its first 10 rows.
 
--Atendance Percentage
+4. What does `df.shape` return? If it returns `(500, 15)`, what does each number mean?
 
-If all students have attendance above 75%, print a suitable message.
+5. How do you filter a DataFrame called `orders` to show only rows where `city` is `Mumbai`?
 
-# Concepts to use:
+6. You accidentally delete your Python script. How would GitHub have saved you?
 
--pandas, DataFrame, groupby(), value_counts(), mean(), max(), min(), sort_values(), iterrows(), Conditional Statements, f-strings
+---
 
- PRACTICE QUESTIONS:
+## Day 1 Completion Checklist
 
-1. How many students are from the Electronics Department?
-2. What is the average attendance of female students?
-3. who is the student with the lowest programming score?
-4. How many students scored above 80 in math?
-5. What  is the average total_score for students with attendance above 90%?
+- [ ] I can explain what a Data Engineer does
+- [ ] I can classify Structured, Semi-Structured, and Unstructured data
+- [ ] I have loaded `student_performance.csv` in Google Colab
+- [ ] All notebook cells run without errors
+- [ ] I have created a GitHub account
+- [ ] I have created a repository named `codeboosters-internship-2024`
+- [ ] I have uploaded my Day 1 notebook to GitHub
+- [ ] I have updated my README.md
+
+---
+
+## What's Coming on Day 2
+
+On Day 2, we take the **same student dataset** and:
+- Store it in a real **database** using SQLite
+- Write **SQL queries** to find insights
+- Create **charts and visualizations** using Matplotlib
+- Build a **Student Performance Dashboard**
+
+---
+
+*Codeboosters Tech | Data Engineering + GenAI Internship | Day 1 of 10*
